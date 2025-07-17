@@ -1,1 +1,2 @@
 This is test text file
+Now added 2nd line to check how dependency works.
