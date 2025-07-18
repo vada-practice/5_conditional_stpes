@@ -70,7 +70,8 @@ jobs:
           path: dist
   deploy:
     needs: build
-    uses: vada-practice/5_conditional_stpes/.github/workflows/reusable.yml@main
+    #uses: vada-practice/5_conditional_stpes/.github/workflows/reusable.yml@main
+    uses: .github/workflows/reusable.yml@main   # Now testingthis path
   report: 
     needs: [lint, deploy]
     if: failure()
