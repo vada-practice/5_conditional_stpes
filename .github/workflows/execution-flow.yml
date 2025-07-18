@@ -35,6 +35,7 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Test code
+        #continue-on-error: true   # Even this step fails the next steps will run as wel next jobs.
         id: run-tests
         run: npm run test
       - name: Upload test report
