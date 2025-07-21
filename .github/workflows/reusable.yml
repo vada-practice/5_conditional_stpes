@@ -1,8 +1,22 @@
 name: Reusable Workflow
-on: workflow_call
+on: 
+  workflow_call:  # This only  triggers when called by another w_flow.
+    inputs:
+      artifact-name: 
+        description: The name of the deployable artifact files 
+        required: false # Here if we set to true then it must expect input the only it will get called.
+        default: dist # If this default value not matches then we must from value from caller flow.
+        type: string
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Get code
+        uses: actions/download-artifact@v3 
+        with:
+          name: ${{ inputs.artifact-name }}
+      - name: List files 
+        run: ls
       - name: Output Information
         run: echo "Deploying and Uploading"

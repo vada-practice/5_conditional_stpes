@@ -71,6 +71,8 @@ jobs:
   deploy:
     needs: build
     uses: vada-practice/5_conditional_stpes/.github/workflows/reusable.yml@main
+    with:
+      artifact-name: dist-files # Here we are pasing this value to reusable workflow. 
   report: 
     needs: [lint, deploy]
     if: failure()
