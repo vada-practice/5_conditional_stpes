@@ -7,9 +7,19 @@ on:
         required: false # Here if we set to true then it must expect input the only it will get called.
         default: dist # If this default value not matches then we must from value from caller flow.
         type: string
+    outputs:
+      result:
+        description: The result of the deployment opeartion
+        value: ${{ jobs.deploy.outputs.otcome }}
+    #secrerts:   # Here we are using this as example. This way we can use secrets in
+      #some-secret:      reusable workflow.
+        #required: false/true 
 
 jobs:
   deploy:
+    outputs:
+      outcome: ${{ steps.set-reuslt.step-result }}
+    
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -20,3 +30,6 @@ jobs:
         run: ls
       - name: Output Information
         run: echo "Deploying and Uploading"
+      - name: Set result Outpot
+        id: set-result 
+        run: echo "step-result=success" >> $GITHUB_OUTPUT
