@@ -10,7 +10,7 @@ on:
     outputs:
       result:
         description: The result of the deployment opeartion
-        value: ${{ jobs.deploy.outputs.otcome }}
+        value: ${{ jobs.deploy.outputs.outcome }}
     #secrerts:   # Here we are using this as example. This way we can use secrets in
       #some-secret:      reusable workflow.
         #required: false/true 
